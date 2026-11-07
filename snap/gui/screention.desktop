@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Screention
+Comment=Screenshot, annotation, OCR and QR tool
+Exec=screention
+Icon=${SNAP}/meta/gui/screention.png
+Terminal=false
+Type=Application
+Categories=Utility;Graphics;
+StartupWMClass=screention

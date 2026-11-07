@@ -1,0 +1,61 @@
+name: screention
+base: core26
+version: '0.13.0'
+title: Screention
+icon: snap/gui/screention.png
+summary: Capture, annotate, read and share screenshots
+description: |
+  Screention captures any part of your screen with Ctrl+Alt+A or from its tray
+  menu. Mark screenshots up with arrows, shapes, text, numbered steps,
+  highlights, blur and redaction boxes, add a styled background, copy the text
+  with on-device OCR, read QR codes and barcodes, then copy, save or upload
+  them for a share link. A gallery keeps saved screenshots with notes and
+  search.
+
+  This snap repackages the official Linux release; the source code is not
+  public. Screention sends anonymous usage counts by default, which you can
+  turn off in Settings > Privacy. Updates arrive through the Snap Store.
+license: Proprietary
+grade: stable
+confinement: strict
+website: https://screention.gkernel.com
+source-code: https://github.com/sidalit/screention-snap
+issues:
+  - https://github.com/gkernel247/screention-releases/issues
+  - https://github.com/sidalit/screention-snap/issues
+contact: https://github.com/sidalit/screention-snap/issues
+
+platforms:
+  amd64:
+
+apps:
+  screention:
+    command: usr/bin/screention
+    extensions: [gnome]
+    # Matches the launch-at-login file the application writes.
+    autostart: Screention.desktop
+    plugs:
+      - home
+      - network
+      - unity7
+
+parts:
+  screention:
+    plugin: dump
+    source: https://github.com/gkernel247/screention-releases/releases/download/v$SNAPCRAFT_PROJECT_VERSION/Screention_${SNAPCRAFT_PROJECT_VERSION}_amd64.deb
+    source-type: deb
+    # From the release's SHA256SUMS; update it with each version.
+    source-checksum: sha256/afea4124c6e612c429ff852769d7da5d0131cc30e4009673bbc0bd1465ec7d1f
+    stage-packages:
+      - libayatana-appindicator3-1
+    prime:
+      - -usr/share/applications
+      - -usr/share/icons
+
+  # Copying images runs wl-copy or xclip; wlroots desktops capture with grim.
+  runtime:
+    plugin: nil
+    stage-packages:
+      - grim
+      - wl-clipboard
+      - xclip
