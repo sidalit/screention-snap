@@ -44,8 +44,6 @@ parts:
     plugin: dump
     source: https://github.com/gkernel247/screention-releases/releases/download/v$SNAPCRAFT_PROJECT_VERSION/Screention_${SNAPCRAFT_PROJECT_VERSION}_amd64.deb
     source-type: deb
-    # From the release's SHA256SUMS; update it with each version.
-    source-checksum: sha256/afea4124c6e612c429ff852769d7da5d0131cc30e4009673bbc0bd1465ec7d1f
     stage-packages:
       - libayatana-appindicator3-1
     prime:
