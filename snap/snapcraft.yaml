@@ -1,6 +1,6 @@
 name: screention
 base: core26
-version: '0.13.0'
+version: '0.14.0'
 title: Screention
 icon: snap/gui/screention.png
 summary: Capture, annotate, read and share screenshots
